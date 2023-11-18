@@ -22,13 +22,7 @@ Agreements can be time-constrained, providing a deadline for fulfillment. If the
 
 The contract includes basic payment handling functionality, allowing the transfer of funds from the buyer to the farmer upon agreement fulfillment.
 
-### 5. Dynamic Pricing
 
-The contract supports dynamic pricing based on market conditions. This can be achieved by integrating with an oracle to fetch real-time price information.
-
-### 6. Feedback and Rating System
-
-Users can provide feedback and ratings based on their experience, building a reputation system for trust among participants.
 
 ## Smart Contract Functions
 
