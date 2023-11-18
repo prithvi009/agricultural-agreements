@@ -2,7 +2,7 @@
 
 ## Overview
 
-This smart contract is designed to facilitate agricultural agreements on the Ethereum blockchain. It allows farmers and buyers to create and manage agreements for the purchase of agricultural products.
+This smart contract is designed to facilitate agricultural agreements on the Ethereum blockchain using Polygon Matic. It allows farmers and buyers to create and manage agreements for the purchase of agricultural products.
 
 ## Features
 
