@@ -6,7 +6,7 @@ contract User {
         string walletAddress;
         string name;
         string email;
-        uint userType; // 1 = lawyer, 2 = judge, 3 = client
+        uint userType; // 1 = farmer, 2 = buyer,
     }
 
     mapping(string => UserInfo) public users;
