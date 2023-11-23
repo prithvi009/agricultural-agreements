@@ -9,23 +9,20 @@ const hre = require("hardhat");
 
 async function main() {
 
-  const AgriAgreement = await ethers.getContractFactory("AgriculturalAgreement")
-  const  agriContract= await AgriAgreement.deploy();
+    const user = await ethers.getContractFactory("User");
+    const userContract = await user.deploy();
   
-
-  console.log(
-    "AgriculturalAgreement deployed to:",
-    agriContract.address
-  );
+    console.log("userAgreement deployed to:", userContract.address);
 }
 
+//0x3a4D71b37972095d1FEd5AA45351412240BDa142
 
-//0xcA9074CF31e703B59a6Afb59e8D6169Dd2B70729
 // We recommend this pattern to be able to use async/await everywhere
 // and properly handle errors.
 main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
 
 
