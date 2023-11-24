@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [walletAddress, setWalletAddress] = useState('');
+  const [userType, setUserType] = useState(''); // State for user type
 
   const handleSignup = async () => {
     // Your signup logic
@@ -40,14 +40,17 @@ const Signup = () => {
 
           <div>
             <label className="block text-sm font-medium">
-              Wallet Address <span className="text-red-500">*</span>:
+              User Type <span className="text-red-500">*</span>:
             </label>
-            <input
-              type="text"
-              value={walletAddress}
-              onChange={(e) => setWalletAddress(e.target.value)}
+            <select
+              value={userType}
+              onChange={(e) => setUserType(e.target.value)}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
-            />
+            >
+              <option value=""></option>
+              <option value="farmer">Farmer</option>
+              <option value="buyer">Buyer</option>
+            </select>
           </div>
 
           <button

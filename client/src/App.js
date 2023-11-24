@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div>
+    <div className='tracking-normal'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

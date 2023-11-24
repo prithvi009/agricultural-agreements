@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="bg-green-500 p-4">
+    <nav className="bg-green-500 p-4 fixed w-full">
       <div className="container mx-auto flex justify-between items-center">
-        <Link to="/" className="text-white text-lg font-bold transition-transform transform hover:scale-110">
-          AgreementSite
+        <Link to="/" className="text-white text-lg font-bold transition-transform transform hover:scale-110 tracking-normal">
+          AgriMitra
         </Link>
         <ul className="flex space-x-4">
           <li>
