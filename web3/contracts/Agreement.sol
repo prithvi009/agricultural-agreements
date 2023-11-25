@@ -4,17 +4,17 @@ pragma solidity >=0.5.0 <0.9.0;
 contract AgriculturalAgreement {
 
     enum PaymentMethod { Ether, Stablecoin, Other }
+    enum AgreementStatus { Pending, Accepted, Rejected }
 
     struct Agreement {
-        address farmer;
-        address buyer;
+        string farmer; // Change type from address to string
+        string buyer; // Change type from address to string
         string farmerName;
         string buyerName;
         string cropType;
         uint quantity;
         uint pricePerUnit;
         PaymentMethod paymentMethod;
-        bool isAgreementFulfilled;
         uint deliveryDate;
         uint contractPeriod;
         string termsAndConditions;
@@ -27,31 +27,27 @@ contract AgriculturalAgreement {
 
     modifier onlyParties(uint _agreementId) {
         Agreement storage agreement = agreements[_agreementId];
-        require(msg.sender == agreement.farmer || msg.sender == agreement.buyer, "Unauthorized");
+        require(keccak256(abi.encodePacked(msg.sender)) == keccak256(abi.encodePacked(agreement.farmer)) || keccak256(abi.encodePacked(msg.sender)) == keccak256(abi.encodePacked(agreement.buyer)), "Unauthorized");
         _;
     }
 
     modifier onlyFarmer(uint _agreementId) {
         Agreement storage agreement = agreements[_agreementId];
-        require(msg.sender == agreement.farmer, "Only the farmer can call this function");
+        require(keccak256(abi.encodePacked(msg.sender)) == keccak256(abi.encodePacked(agreement.farmer)), "Only the farmer can call this function");
         _;
     }
 
     modifier onlyBuyer(uint _agreementId) {
         Agreement storage agreement = agreements[_agreementId];
-        require(msg.sender == agreement.buyer, "Only the buyer can call this function");
+        require(keccak256(abi.encodePacked(msg.sender)) == keccak256(abi.encodePacked(agreement.buyer)), "Only the buyer can call this function");
         _;
     }
 
-    modifier agreementNotFulfilled(uint _agreementId) {
-        Agreement storage agreement = agreements[_agreementId];
-        require(!agreement.isAgreementFulfilled, "Agreement already fulfilled");
-        _;
-    }
+
 
     function createAgreement(
-        address _farmer,
-        address _buyer,
+        string memory _farmer,
+        string memory _buyer,
         string memory _farmerName,
         string memory _buyerName,
         string memory _cropType,
@@ -62,7 +58,7 @@ contract AgriculturalAgreement {
         uint _contractPeriod,
         string memory _termsAndConditions
     ) external {
-        require(_farmer != address(0) && _buyer != address(0), "Invalid addresses");
+        require(bytes(_farmer).length > 0 && bytes(_buyer).length > 0, "Invalid addresses");
 
         agreementCount++;
 
@@ -75,17 +71,47 @@ contract AgriculturalAgreement {
         newAgreement.quantity = _quantity;
         newAgreement.pricePerUnit = _pricePerUnit;
         newAgreement.paymentMethod = _paymentMethod;
-        newAgreement.isAgreementFulfilled = false;
         newAgreement.deliveryDate = _deliveryDate;
         newAgreement.contractPeriod = _contractPeriod;
         newAgreement.termsAndConditions = _termsAndConditions;
     }
 
-    function fulfillAgreement(uint _agreementId) external payable onlyParties(_agreementId) onlyFarmer(_agreementId) agreementNotFulfilled(_agreementId) {
+    function fulfillAgreement(uint _agreementId) external payable onlyParties(_agreementId) onlyFarmer(_agreementId)  {
         Agreement storage agreement = agreements[_agreementId];
-
-        agreement.isAgreementFulfilled = true;
 
         emit AgreementFulfilled(_agreementId);
     }
+
+    function getAllAgreementsForAddress(string memory _address) external view returns (Agreement[] memory) {
+        uint count = 0;
+        for (uint i = 1; i <= agreementCount; i++) {
+            Agreement storage agreement = agreements[i];
+            if (
+                keccak256(abi.encodePacked(agreement.farmer)) == keccak256(abi.encodePacked(_address)) ||
+                keccak256(abi.encodePacked(agreement.buyer)) == keccak256(abi.encodePacked(_address))
+            ) {
+                count++;
+            }
+        }
+
+        
+        Agreement[] memory result = new Agreement[](count);
+        uint index = 0;
+
+        for (uint i = 1; i <= agreementCount; i++) {
+            Agreement storage agreement = agreements[i];
+            if (
+                keccak256(abi.encodePacked(agreement.farmer)) == keccak256(abi.encodePacked(_address)) ||
+                keccak256(abi.encodePacked(agreement.buyer)) == keccak256(abi.encodePacked(_address))
+            ) {
+                result[index] = agreement;
+                index++;
+            }
+        }
+
+        return result;
+    }
+
+
+    
 }
