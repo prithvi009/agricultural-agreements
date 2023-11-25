@@ -1,24 +1,50 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
-  const [username, setUsername] = useState('');
+  const [walletAddress, setWalletAddress] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Create a history object for navigation
 
-  const handleLogin = () => {
-    if (!username || !password) {
-      toast.error('Please enter both username and password');
-      return;
-    }
-    // Implement your login logic here
-    // For the sake of the example, let's assume a simple check
-    if (username === 'user' && password === 'password') {
-      // Successful login
-      toast.success('Login successful');
-    } else {
-      // Incorrect credentials
-      toast.error('Incorrect username or password');
+  const handleLogin = async () => {
+    try {
+      if (!walletAddress || !password) {
+        toast.error('Please enter both wallet address and password');
+        return;
+      }
+
+      // Make a POST request to your backend login endpoint
+      const response = await fetch('/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ walletAddress, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // Successful login
+        toast.success('Login successful');
+
+        // Check the user type and redirect accordingly
+        if (data.userType === 'farmer') {
+          navigate("/farmer-dashboard");
+        } else if (data.userType === 'buyer') {
+          navigate('/buyer-dashboard');
+        }
+
+        // You can perform additional actions here if needed
+      } else {
+        // Incorrect credentials or other error
+        toast.error(data.error || 'Login failed');
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+      toast.error('An unexpected error occurred');
     }
   };
 
@@ -28,11 +54,11 @@ const LoginPage = () => {
         <h2 className="text-2xl font-semibold mb-4 text-center">Login</h2>
         <form className="space-y-4">
           <div>
-            <label className="block text-sm font-medium">Username:</label>
+            <label className="block text-sm font-medium">Wallet Address:</label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
               className="mt-1 p-2 w-full border border-gray-300 rounded-md"
             />
           </div>
