@@ -1,12 +1,62 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
-  const [userType, setUserType] = useState(''); // State for user type
+  const [password, setPassword] = useState('');
+
+  const [userType, setUserType] = useState('');
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
-    // Your signup logic
+    try {
+      if (!username || !email || !userType) {
+        toast.error('Please fill in all required fields');
+        return;
+      }
+
+      // Make a POST request to your backend signup endpoint
+      const response = await fetch('/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          walletAddress: generateUniqueWalletAddress(), // Assuming you have a function to generate a unique wallet address
+          name: username,
+          email,
+          userType,
+          password  // Assuming you have a function to generate a random password
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        toast.success('User created successfully');
+        navigate('/login'); // Redirect to login page after successful signup
+      } else {
+        toast.error(data.error || 'Signup failed');
+      }
+    } catch (error) {
+      console.error('Error during signup:', error);
+      toast.error('An unexpected error occurred');
+    }
+  };
+
+  const generateUniqueWalletAddress = () => {
+    // Implement your logic to generate a unique wallet address
+    // This could involve interacting with your backend or generating a unique identifier
+    return '0xUniqueWalletAddress'; // Replace with your actual logic
+  };
+
+  const generateRandomPassword = () => {
+    // Implement your logic to generate a random password
+    // This could involve using a library or generating a secure random string
+    return 'RandomPassword123'; // Replace with your actual logic
   };
 
   return (
@@ -52,15 +102,26 @@ const Signup = () => {
               <option value="buyer">Buyer</option>
             </select>
           </div>
-
+          <div>
+            <label className="block text-sm font-medium">
+              Password<span className="text-red-500">*</span>:
+            </label>
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+            />
+          </div>
           <button
             type="button"
             onClick={handleSignup}
-            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-900 transition duration-300 w-full "
+            className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-900 transition duration-300 w-full"
           >
             Sign Up
           </button>
         </form>
+        <ToastContainer />
       </div>
     </div>
   );
