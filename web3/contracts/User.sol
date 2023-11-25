@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity >=0.5.0 <0.9.0;
 
 contract User {
     struct UserInfo {
@@ -34,7 +34,7 @@ contract User {
         string memory email,
         uint userType
     ) public {
-        require(users[walletAddress].userType != 0);
+        require(users[walletAddress].userType != 0, "User does not exist");
 
         users[walletAddress].name = name;
         users[walletAddress].email = email;
@@ -42,7 +42,7 @@ contract User {
     }
 
     function deleteUser(string memory walletAddress) public {
-        require(users[walletAddress].userType != 0);
+        require(users[walletAddress].userType != 0, "User does not exist");
 
         delete users[walletAddress];
     }
