@@ -1,24 +1,32 @@
 import express from 'express'
 const router = express.Router();
-import { provider } from '../utils/web3.js.js';
-import {userAbi} from '../utils/userAbi.js.js';
-import { ethers } from 'ethers';
+import dotenv from 'dotenv';
+dotenv.config();
+import { contractAbi, contractAddress, web3 } from '../utils/user.contract.js';
+
+
+
+router.get('/', async (req, res) => {
+    try {
+        const { walletAddress, password } = req.body;
+        const contract = new web3.eth.Contract(contractAbi, contractAddress);
+        console.log(contract)
+        const tx = await contract.methods.loginUser(walletAddress, password).call();
+        res.status(200).json({ message: 'User created successfully', data: tx });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+}
+);
 
 
 // Create a new user
 router.post('/create', async (req, res) => {
     try {
-        const { walletAddress, name, email, userType } = req.body;
-        const userContract = new ethers.Contract(
-          "0x3a4D71b37972095d1FEd5AA45351412240BDa142",
-            userAbi,
-            provider.getSigner(0)
-        );
-
-        console.log('Available Contract Methods:', userContract.functions);
-        const tx = await userContract.functions.addUser(walletAddress, name, email, userType);
-        const receipt = await tx.wait();
-        console.log('Transaction Hash:', tx.hash);
+        const { walletAddress, name, email, userType, password } = req.body;
+        const contract = new web3.eth.Contract(contractAbi, contractAddress);
+        const tx = await contract.methods.addUser(walletAddress, name, email, userType, password).send({ from: '0x252127FCAD82b4d8c85A902535f08d7786694c54', gas: 3000000, gasPrice: 20000000000 });
+        res.status(200).json({ message: 'User created successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });
     }

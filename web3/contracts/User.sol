@@ -6,7 +6,8 @@ contract User {
         string walletAddress;
         string name;
         string email;
-        uint userType; // 1 = farmer, 2 = buyer,
+        uint userType; // 1 = farmer, 2 = buyer
+        string password; 
     }
 
     mapping(string => UserInfo) public users;
@@ -17,47 +18,33 @@ contract User {
         string memory walletAddress,
         string memory name,
         string memory email,
-        uint userType
+        uint userType,
+        string memory password
     ) public {
         require(users[walletAddress].userType == 0, "User already exists");
+
         users[walletAddress] = UserInfo({
             walletAddress: walletAddress,
             name: name,
             email: email,
-            userType: userType
+            userType: userType,
+            password: password
         });
     }
 
-    function updateUser(
-        string memory walletAddress,
-        string memory name,
-        string memory email,
-        uint userType
-    ) public {
+    function updatePassword(string memory walletAddress, string memory newPassword) public {
         require(users[walletAddress].userType != 0, "User does not exist");
 
-        users[walletAddress].name = name;
-        users[walletAddress].email = email;
-        users[walletAddress].userType = userType;
+        users[walletAddress].password = newPassword;
     }
 
-    function deleteUser(string memory walletAddress) public {
+    function loginUser(string memory walletAddress, string memory password) public view returns (bool, UserInfo memory) {
         require(users[walletAddress].userType != 0, "User does not exist");
 
-        delete users[walletAddress];
-    }
-
-    function getUserInfo(
-        string memory walletAddress
-    ) public view returns (UserInfo memory) {
-        return users[walletAddress];
-    }
-
-    function isFarmer(string memory walletAddress) public view returns (bool) {
-        return users[walletAddress].userType == 1;
-    }
-
-    function isBuyer(string memory walletAddress) public view returns (bool) {
-        return users[walletAddress].userType == 2;
+        if (keccak256(abi.encodePacked(users[walletAddress].password)) == keccak256(abi.encodePacked(password))) {
+            return (true, users[walletAddress]);
+        } else {
+            return (false, UserInfo({walletAddress: "", name: "", email: "", userType: 0, password: ""}));
+        }
     }
 }
