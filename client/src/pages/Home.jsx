@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ImageSlider from '../components/ImageSlider';
 import image1 from '../images/a.jpg';
-import image2 from '../images/b.jpg';
 import image3 from '../images/c.jpg';
 import image4 from '../images/d.jpg';
-import NewContractForm from '../components/NewContractForm';
+
 
 const images = [image3, image1, image4 /* Add more image URLs here... */];
 

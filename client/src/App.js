@@ -6,6 +6,8 @@ import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
 import ContactUs from './pages/Contact';
 import AboutUs from './pages/About';
+import BuyerDashboard from './pages/BuyerDashboard';
+import NewContractForm from './components/NewContractForm';
 
 
 
@@ -20,6 +22,8 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path='/about' element={<AboutUs/>}/>
+        <Route path="/dashboard" element={<BuyerDashboard/>} />
+        <Route path="/dashboard/contract" element={<NewContractForm/>} />
       </Routes>
     </div>
   );

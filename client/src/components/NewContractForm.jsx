@@ -34,27 +34,21 @@ const NewContractForm = () => {
     // const tx = await contract.methods.createAgreement(...Object.values(formData)).send({ from: buyer, gas: 3000000, gasPrice: 20000000000 });
   };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  };
+  
 
   return (
     <div className='flex flex-col justify-center items-center h-[100vh]'>
       <div className='font-class text-[3rem] font-extrabold'>Contract Form</div>
     <form className="mx-auto mt-[2rem] w-[40rem]" onSubmit={handleFormSubmit}>
-      {/* FarmerName and BuyerName Details */}
       <div className='flex gap-10'>
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="text"
           name="farmerName"
           id="farmerName"
-          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-          placeholder=" "
-          required=""
+          className="block py-2.5 px-0 w-full text-sm text-black bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
           value={formData.farmerName}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, farmerName: e.target.value})}
         />
         <label
           htmlFor="farmerName"
@@ -72,7 +66,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.buyerName}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, buyerName: e.target.value})}
         />
         <label
           htmlFor="buyerName"
@@ -82,8 +76,6 @@ const NewContractForm = () => {
         </label>
       </div>
       </div>
-
-  
 
       {/* Crop Details */}
       <div className='flex gap-10'>
@@ -96,7 +88,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.cropType}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, cropType: e.target.value})}
         />
         <label
           htmlFor="cropType"
@@ -114,7 +106,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.quantity}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, quantity: e.target.value} )}
         />
         <label
           htmlFor="quantity"
@@ -134,7 +126,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.pricePerUnit}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, pricePerUnit: e.target.value})}
         />
         <label
           htmlFor="pricePerUnit"
@@ -152,7 +144,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.paymentMethod}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, paymentMethod: e.target.value})}
         />
         <label
           htmlFor="paymentMethod"
@@ -162,7 +154,6 @@ const NewContractForm = () => {
         </label>
       </div>
 
-      {/* Delivery and Contract Details */}
       <div className="relative z-0 w-full mb-5 group">
         <input
           type="text"
@@ -172,7 +163,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.deliveryDate}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, deliveryDate: e.target.value})}
         />
         <label
           htmlFor="deliveryDate"
@@ -190,7 +181,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.contractPeriod}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, contractPeriod: e.target.value})}
         />
         <label
           htmlFor="contractPeriod"
@@ -209,7 +200,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.termsAndConditions}
-          onChange={handleChange}
+          onChange={(e)=> setFormData({...formData, termsAndConditions: e.target.value})}
         ></textarea>
         <label
           htmlFor="termsAndConditions"
