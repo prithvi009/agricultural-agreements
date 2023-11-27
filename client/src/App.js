@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import Login from './components/Login';
-import Signup from './components/Signup';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Navbar from './components/Navbar';
-import ContactUs from './components/Contact';
-import AboutUs from './components/About';
+import ContactUs from './pages/Contact';
+import AboutUs from './pages/About';
 
 
 
