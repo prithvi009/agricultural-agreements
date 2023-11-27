@@ -4,6 +4,8 @@ import ImageSlider from '../components/ImageSlider';
 import image1 from '../images/a.jpg';
 import image3 from '../images/c.jpg';
 import image4 from '../images/d.jpg';
+import Goal from './Goal';
+import Problem from './Problems';
 
 
 const images = [image3, image1, image4 /* Add more image URLs here... */];
@@ -29,18 +31,18 @@ const Home = () => {
   };
 
   return (
-    <>
-
-      <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div>
+      <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 mt-[4.5rem] ">
         <ImageSlider
-        
           images={images}
           currentImageIndex={currentImageIndex}
           handleImageChange={handleImageChange}
         />
+        <Problem/>
+        <Goal/>
       </div>
       <Footer />
-    </>
+      </div>
   );
 };
 

@@ -1,12 +1,14 @@
 // src/ContactUs.js
 import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ContactUs = () => {
+
   return (
     <div className="container w-[100%] h-[100%] flex p-4 mt-5">
 
       <div className='mt-20 ml-[24rem] mx-auto w-fit'>
-        <h1 className="text-5xl text-center font-bold mb-4 text-blue-500">Contact Us</h1>
+        <h1 className=" text-center text-[5rem] font-extrabold mb-4 text-blue-500">Contact Us</h1>
         <p className="mb-8 text-center">
           If you have any questions or concerns, please feel free to contact us using the form below.
         </p>
@@ -39,7 +41,7 @@ const ContactUs = () => {
             ></textarea>
           </div>
           <div className="flex items-center justify-end">
-            <button
+            <button 
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="button"
             >
