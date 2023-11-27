@@ -6,19 +6,14 @@ const AboutUs = () => {
     <div className="container mx-auto mt-[150px] p-8">
       <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl font-extrabold text-indigo-700 mb-4">About Us</h1>
-        <p className="text-gray-600 mb-8">
-          Welcome to our company! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          tincidunt, erat in malesuada aliquam, est erat faucibus purus, eget viverra nulla sem
-          vitae neque.
-        </p>
+        
       </div>
       <div className="flex flex-wrap -mx-4">
         <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Mission</h2>
             <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, erat in
-              malesuada aliquam, est erat faucibus purus, eget viverra nulla sem vitae neque.
+            "Our mission is to revolutionize the agricultural sector by leveraging cutting-edge blockchain technology. We are committed to providing a decentralized platform that automates and secures agreements, simplifying transactions between farmers and buyers. At [Your Company Name], we strive to enhance efficiency, reduce uncertainties, and promote fair practices in agricultural trade. we aim to empower stakeholders and contribute to the overall growth and stability of the agricultural ecosystem."
             </p>
           </div>
         </div>
@@ -26,8 +21,7 @@ const AboutUs = () => {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Vision</h2>
             <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, erat in
-              malesuada aliquam, est erat faucibus purus, eget viverra nulla sem vitae neque.
+            we envision a future where the agricultural industry is characterized by transparency, trust, and sustainability. Our vision is to be a pioneering force in transforming the landscape of agricultural transactions, empowering farmers and buyers alike through innovative blockchain solutions. We aspire to create an ecosystem where every handshake in the agricultural agreements is backed by secure, smart contracts, fostering a prosperous and equitable agricultural community."
             </p>
           </div>
         </div>
@@ -35,8 +29,11 @@ const AboutUs = () => {
           <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Values</h2>
             <p className="text-gray-600">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tincidunt, erat in
-              malesuada aliquam, est erat faucibus purus, eget viverra nulla sem vitae neque.
+              Transparency:
+                We value transparency as the cornerstone of our operations. We are committed to providing a clear and open platform where every agreement, transaction, and interaction is visible and traceable.
+              Trust:
+                Trust is the foundation of our relationships with farmers, buyers, and partners. We prioritize building and maintaining trust by ensuring the integrity and security of our blockchain-based solutions.
+                We embrace innovation as a driving force behind our mission.
             </p>
           </div>
         </div>

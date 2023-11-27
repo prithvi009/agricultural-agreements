@@ -4,7 +4,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import Web3 from 'web3'
 import 'react-toastify/dist/ReactToastify.css';
 
-const LoginPage = () => {
+const LoginPage = ({setUser}) => {
   const [walletAddress, setWalletAddress] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
@@ -27,7 +27,8 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
-      console.log(data)
+      setUser(data);
+      localStorage.setItem('user', JSON.stringify(data));
 
       if (data !== null) {
         toast.success('Login successful');

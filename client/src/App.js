@@ -10,12 +10,13 @@ import AboutUs from './pages/About';
 
 
 function App() {
+  const [user, setUser] = React.useState(null);
   return (
     <div className='flex flex-col'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login setUser={setUser}/>} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path='/about' element={<AboutUs/>}/>
