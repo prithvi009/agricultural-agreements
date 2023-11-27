@@ -1,22 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 import { ToastContainer, toast } from 'react-toastify';
+import Web3 from 'web3'
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = () => {
   const [walletAddress, setWalletAddress] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Create a history object for navigation
+  const navigate = useNavigate();
+  
 
   const handleLogin = async () => {
     try {
+
       if (!walletAddress || !password) {
         toast.error('Please enter both wallet address and password');
         return;
       }
 
-      // Make a POST request to your backend login endpoint
-      const response = await fetch('/login', {
+      const response = await fetch('http://localhost:5001/auth', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -25,21 +27,17 @@ const LoginPage = () => {
       });
 
       const data = await response.json();
+      console.log(data)
 
-      if (response.ok) {
-        // Successful login
+      if (data !== null) {
         toast.success('Login successful');
 
-        // Check the user type and redirect accordingly
-        if (data.userType === 'farmer') {
+        if (data[3] === '1') {
           navigate("/farmer-dashboard");
-        } else if (data.userType === 'buyer') {
+        } else{
           navigate('/buyer-dashboard');
         }
-
-        // You can perform additional actions here if needed
       } else {
-        // Incorrect credentials or other error
         toast.error(data.error || 'Login failed');
       }
     } catch (error) {
