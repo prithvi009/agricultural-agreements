@@ -3,9 +3,9 @@ import React from 'react';
 
 const ContactUs = () => {
   return (
-    <div className="container w-full flex p-4 mt-5">
+    <div className="container w-[100%] h-[100%] flex p-4 mt-5">
 
-      <div className='mt-20 mx-auto'>
+      <div className='mt-20 ml-[24rem] mx-auto w-fit'>
         <h1 className="text-5xl text-center font-bold mb-4 text-blue-500">Contact Us</h1>
         <p className="mb-8 text-center">
           If you have any questions or concerns, please feel free to contact us using the form below.

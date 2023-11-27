@@ -14,7 +14,7 @@ import NewContractForm from './components/NewContractForm';
 function App() {
   const [user, setUser] = React.useState(null);
   return (
-    <div className='flex flex-col'>
+    <div className='flex flex-col w-[100vw] h-[100vh]'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
