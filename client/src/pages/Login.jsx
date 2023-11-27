@@ -28,6 +28,7 @@ const LoginPage = ({setUser}) => {
         },
         body: JSON.stringify({ walletAddress, password }),
       });
+      console.log(response)
 
       const data = await response.json();
       
@@ -39,12 +40,12 @@ const LoginPage = ({setUser}) => {
         if (data[3] === '1') {
           setTimeout(() => {
             setLoading(false);
-            navigate("/farmer-dashboard");
+            navigate("/dashboard");
           }, 2000);
         } else{
           setTimeout(() => {
             setLoading(false);
-            navigate('/buyer-dashboard');
+            navigate('/dashboard');
           }, 2000);
         }
       } else {

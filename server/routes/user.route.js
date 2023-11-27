@@ -10,8 +10,12 @@ router.post('/', async (req, res) => {
     try {
         const { walletAddress, password } = req.body;
         const contract = new web3.eth.Contract(contractAbi, contractAddress);
-        console.log(contract)
         const tx = await contract.methods.loginUser(walletAddress, password).call();
+        console.log(tx[0])
+        if (tx[0] === false) {
+            res.status(404).json({ message: 'Invalid Credentials' });
+            return;
+        }
         res.status(200).json(tx[1]);
     } catch (error) {
         res.status(500).json({ error: error.message });

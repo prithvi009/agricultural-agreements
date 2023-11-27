@@ -27,6 +27,7 @@ const Signup = () => {
         return;
       }
 
+      const userT = userType === 'Farmer' ? 1 : 2;
 
       const response = await fetch('http://localhost:5001/auth/create', {
         method: 'POST',
@@ -34,10 +35,10 @@ const Signup = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          walletAddress: wallet, 
+          walletAddress: "0xd0d09Dd775241100173d934fa1D638e5b8a24dc8", 
           name: username,
           email,
-          userType:1,
+          userType:userT,
           password 
         }),
       });
