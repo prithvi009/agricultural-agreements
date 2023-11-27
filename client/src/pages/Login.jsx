@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useHistory for navigation
 import { ToastContainer, toast } from 'react-toastify';
-import Web3 from 'web3'
+import { Link } from 'react-router-dom';
 import 'react-toastify/dist/ReactToastify.css';
 
 const LoginPage = ({setUser}) => {
@@ -80,6 +80,7 @@ const LoginPage = ({setUser}) => {
             Login
           </button>
         </form>
+        <p className='mt-4'>Dont have an Account? <Link className="text-blue-500" to='/signup'>signup</Link></p>
         <ToastContainer />
       </div>
     </div>

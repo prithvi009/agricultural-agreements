@@ -10,7 +10,7 @@ const AboutUs = () => {
       </div>
       <div className="flex flex-wrap -mx-4">
         <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className=" bg-slate-100 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Mission</h2>
             <p className="text-gray-600">
             "Our mission is to revolutionize the agricultural sector by leveraging cutting-edge blockchain technology. We are committed to providing a decentralized platform that automates and secures agreements, simplifying transactions between farmers and buyers. At [Your Company Name], we strive to enhance efficiency, reduce uncertainties, and promote fair practices in agricultural trade. we aim to empower stakeholders and contribute to the overall growth and stability of the agricultural ecosystem."
@@ -18,7 +18,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-slate-100 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Vision</h2>
             <p className="text-gray-600">
             we envision a future where the agricultural industry is characterized by transparency, trust, and sustainability. Our vision is to be a pioneering force in transforming the landscape of agricultural transactions, empowering farmers and buyers alike through innovative blockchain solutions. We aspire to create an ecosystem where every handshake in the agricultural agreements is backed by secure, smart contracts, fostering a prosperous and equitable agricultural community."
@@ -26,7 +26,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="w-full md:w-1/2 lg:w-1/3 px-4 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="bg-slate-100 p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-semibold mb-4">Our Values</h2>
             <p className="text-gray-600">
               Transparency:
