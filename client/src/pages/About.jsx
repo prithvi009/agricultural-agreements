@@ -3,7 +3,7 @@ import React from 'react';
 
 const AboutUs = () => {
   return (
-    <div className="container mx-auto p-8">
+    <div className="container mx-auto mt-[150px] p-8">
       <div className="max-w-2xl mx-auto text-center">
         <h1 className="text-4xl font-extrabold text-indigo-700 mb-4">About Us</h1>
         <p className="text-gray-600 mb-8">

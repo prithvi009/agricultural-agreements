@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ContractList from './ContractList';
+import ContractList from '../components/ContractList';
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
-import NewContractForm from './NewContractForm';
+import NewContractForm from '../components/NewContractForm';
 const BuyerDashboard = () => {
   const [contracts, setContracts] = useState([]);
 
