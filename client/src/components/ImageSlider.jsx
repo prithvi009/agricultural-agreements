@@ -1,4 +1,3 @@
-// ImageSlider.js
 import React, { useState } from 'react';
 
 const ImageSlider = ({ images }) => {
