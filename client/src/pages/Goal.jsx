@@ -14,6 +14,8 @@ export default function Goal() {
         agricultural trade.
        we aim to empower stakeholders and contribute to the overall growth and stability of the agricultural ecosystem
       </div>
+      <div className='h-[2px] bg-gray-300 mt-[5rem]'></div>
+
 
     </div>
   )

@@ -14,9 +14,7 @@ export default function Problem() {
         Our Projects enables them to solve a number of problems.
       </div>
 
-      <div className='h-[2px] bg-gray-300 mt-[5rem]'>
-
-      </div>
+      <div className='h-[2px] bg-gray-300 mt-[5rem]'></div>
 
     </div>
   )
