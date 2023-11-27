@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Web3 from 'web3';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
+  const [wallet, setWallet] = useState('');
   const [password, setPassword] = useState('');
 
   const [userType, setUserType] = useState('');
@@ -13,22 +15,29 @@ const Signup = () => {
 
   const handleSignup = async () => {
     try {
+      if(window.ethereum){
+        await window.ethereum.request({ method: 'eth_requestAccounts' });
+        const web3 =new Web3(window.ethereum);
+        const accounts = await web3.eth.getAccounts();
+        setWallet(accounts[0])
+        console.log('User accounts:', accounts);
+      }
       if (!username || !email || !userType) {
         toast.error('Please fill in all required fields');
         return;
       }
 
       // Make a POST request to your backend signup endpoint
-      const response = await fetch('/create', {
+      const response = await fetch('http://localhost:5001/auth/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          walletAddress: generateUniqueWalletAddress(), // Assuming you have a function to generate a unique wallet address
+          walletAddress: wallet, // Assuming you have a function to generate a unique wallet address
           name: username,
           email,
-          userType,
+          userType:1,
           password  // Assuming you have a function to generate a random password
         }),
       });
