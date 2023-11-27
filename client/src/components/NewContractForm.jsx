@@ -15,7 +15,8 @@ const NewContractForm = () => {
     termsAndConditions: '',
   });
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
     // Handle form submission (e.g., send data to the backend)
     // Example API call:
     // const response = await fetch('api/farmer/new-contract', {
@@ -39,63 +40,197 @@ const NewContractForm = () => {
   };
 
   return (
-    <div>
-      <h3>Create New Contract</h3>
-      <form onSubmit={handleFormSubmit}>
-        {/* Farmer and Buyer Details */}
-        <div>
-          <label>Farmer:</label>
-          <input type="text" name="farmer" value={formData.farmer} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Buyer:</label>
-          <input type="text" name="buyer" value={formData.buyer} onChange={handleChange} />
-        </div>
+    <div className='flex flex-col justify-center items-center h-[100vh]'>
+      <div className='font-class text-[3rem] font-extrabold'>Contract Form</div>
+    <form className="mx-auto mt-[2rem] w-[40rem]" onSubmit={handleFormSubmit}>
+      {/* FarmerName and BuyerName Details */}
+      <div className='flex gap-10'>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="farmerName"
+          id="farmerName"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.farmerName}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="farmerName"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Farmer Name
+        </label>
+      </div>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="buyerName"
+          id="buyerName"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.buyerName}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="buyerName"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Buyer Name
+        </label>
+      </div>
+      </div>
 
-        {/* Crop Details */}
-        <div>
-          <label>Crop Type:</label>
-          <input type="text" name="cropType" value={formData.cropType} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Quantity:</label>
-          <input type="text" name="quantity" value={formData.quantity} onChange={handleChange} />
-        </div>
+  
 
-        {/* Pricing and Payment Details */}
-        <div>
-          <label>Price Per Unit:</label>
-          <input type="text" name="pricePerUnit" value={formData.pricePerUnit} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Payment Method:</label>
-          <input type="text" name="paymentMethod" value={formData.paymentMethod} onChange={handleChange} />
-        </div>
+      {/* Crop Details */}
+      <div className='flex gap-10'>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="cropType"
+          id="cropType"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.cropType}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="cropType"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Crop Type
+        </label>
+      </div>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="quantity"
+          id="quantity"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.quantity}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="quantity"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Quantity in kg
+        </label>
+      </div>
+      </div>
+      {/* Pricing and Payment Details */}
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="pricePerUnit"
+          id="pricePerUnit"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.pricePerUnit}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="pricePerUnit"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Price Per Unit
+        </label>
+      </div>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="paymentMethod"
+          id="paymentMethod"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.paymentMethod}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="paymentMethod"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Payment Method
+        </label>
+      </div>
 
-        {/* Delivery and Contract Details */}
-        <div>
-          <label>Delivery Date:</label>
-          <input type="text" name="deliveryDate" value={formData.deliveryDate} onChange={handleChange} />
-        </div>
-        <div>
-          <label>Contract Period:</label>
-          <input type="text" name="contractPeriod" value={formData.contractPeriod} onChange={handleChange} />
-        </div>
+      {/* Delivery and Contract Details */}
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="deliveryDate"
+          id="deliveryDate"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.deliveryDate}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="deliveryDate"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Delivery Date
+        </label>
+      </div>
+      <div className="relative z-0 w-full mb-5 group">
+        <input
+          type="text"
+          name="contractPeriod"
+          id="contractPeriod"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.contractPeriod}
+          onChange={handleChange}
+        />
+        <label
+          htmlFor="contractPeriod"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Contract Period
+        </label>
+      </div>
 
-        {/* Additional Terms and Conditions */}
-        <div>
-          <label>Terms and Conditions:</label>
-          <textarea
-            name="termsAndConditions"
-            value={formData.termsAndConditions}
-            onChange={handleChange}
-          ></textarea>
-        </div>
+      {/* Terms and Conditions */}
+      <div className="relative z-0 w-full mb-5 group">
+        <textarea
+          name="termsAndConditions"
+          id="termsAndConditions"
+          className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+          required=""
+          value={formData.termsAndConditions}
+          onChange={handleChange}
+        ></textarea>
+        <label
+          htmlFor="termsAndConditions"
+          className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >
+          Terms and Conditions
+        </label>
+      </div>
+      <div className='flex justify-center items-center w-full'>
+        <button
+        type="submit"
+        className="text-white mx-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Submit
+      </button></div>
 
-        <button type="submit">Submit</button>
-      </form>
+    </form>
     </div>
   );
 };
 
 export default NewContractForm;
+
+
