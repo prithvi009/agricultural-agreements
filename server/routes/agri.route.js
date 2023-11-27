@@ -14,7 +14,7 @@ router.post('/create/:buyer', async(req, res) => {
 
     try{
         const contract = new web3.eth.Contract(contractAbi, contractAddress);
-        const tx = await contract.methods.createAgreement(farmer, buyer, farmerName, buyerName, cropType, quantity, pricePerUnit, paymentMethod, deliveryDate, contractPeriod, termsAndConditions).send({ from: buyer, gas: 3000000, gasPrice: 20000000000 });
+        const tx = await contract.methods.createAgreement(farmer, buyer, farmerName, buyerName, cropType,parseInt(quantity), parseInt(pricePerUnit), parseInt(paymentMethod), parseInt(deliveryDate), parseInt(contractPeriod), termsAndConditions).send({ from: "0xf7cdbaF9b07b5394A1e9AF0FEE9090722227497B", gas: 3000000, gasPrice: 20000000000 });
         res.status(200).json({ message: 'Agri Contract created successfully' });
     }
     catch(error){
@@ -28,7 +28,7 @@ router.get('/:walletAddress', async(req, res) => {
     try{
         const contract = new web3.eth.Contract(contractAbi, contractAddress);
         const tx = await contract.methods.getAllAgreementsForAddress(walletAddress).call();
-        res.status(200).json({ message: 'Agri Contract fetched successfully', data: tx });
+        res.status(200).json(tx);
     }
     catch(error){
         res.status(500).json({ error: error.message });

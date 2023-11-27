@@ -3,18 +3,40 @@ import ContractList from '../components/ContractList';
 import NewContractForm from '../components/NewContractForm';
 
 const FarmerDashboard = () => {
+
   const [contracts, setContracts] = useState([]);
+  const buyerAdd = localStorage.getItem('user');
+  const walletAddress = JSON.parse(buyerAdd)[0];
+
+  const fetchContracts = async () => {
+
+
+    try{
+      const res = await fetch(`http://localhost:5001/agri/${walletAddress}`,{
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await res.json();
+      setContracts(data);
+      console.log(data);
+    }
+    catch(error){
+      console.error('Error during fetching contracts:', error);
+    }
+  };
+
 
   useEffect(() => {
-    
-  }, []); // Run once on component mount
+    fetchContracts();
+    // eslint-disable-next-line
+  },[]); 
 
   return (
     <div>
       <h2>Farmer Dashboard</h2>
       <ContractList contracts={contracts} />
-      {/* Add New Availability button that opens a form */}
-      <NewContractForm />
     </div>
   );
 };

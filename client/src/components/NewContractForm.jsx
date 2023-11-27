@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const NewContractForm = () => {
+  const buyerAdd = localStorage.getItem('user');
+  const buyer = JSON.parse(buyerAdd)[0];
+  const navigate = useNavigate();
+  
+  
   const [formData, setFormData] = useState({
-    farmer: '',
+    farmer: '0x0448D11632853DE1F86AfB26160822E1Fc2EC924',
     buyer: '',
     farmerName: '',
     buyerName: '',
@@ -17,21 +26,28 @@ const NewContractForm = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission (e.g., send data to the backend)
-    // Example API call:
-    // const response = await fetch('api/farmer/new-contract', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(formData),
-    // });
-    // const data = await response.json();
-    // console.log('Contract created:', data);
 
-    // For blockchain interaction (assuming you have a function to handle this)
-    // Example using web3.js or ethers.js:
-    // const tx = await contract.methods.createAgreement(...Object.values(formData)).send({ from: buyer, gas: 3000000, gasPrice: 20000000000 });
+    try{
+      const response = await fetch(`http://localhost:5001/agri/create/${buyer}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      console.log('Contract created:', data);
+      if (response.ok) {
+        toast.success('Contract created successfully');
+        setTimeout(() => {
+          navigate('/buyer-dashboard');
+        }, 2000);
+      }
+    }
+    catch(err){
+      console.error('Error creating contract:', err);
+      
+    }
   };
 
   
@@ -77,7 +93,6 @@ const NewContractForm = () => {
       </div>
       </div>
 
-      {/* Crop Details */}
       <div className='flex gap-10'>
       <div className="relative z-0 w-full mb-5 group">
         <input
@@ -215,9 +230,11 @@ const NewContractForm = () => {
         className="text-white mx-auto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         Submit
-      </button></div>
+      </button>
+      </div>
 
     </form>
+    <ToastContainer />
     </div>
   );
 };
