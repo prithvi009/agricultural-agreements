@@ -1,8 +1,13 @@
-// src/components/Navbar.js
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [showSignInButton, setShowSignInButton] = useState(true);
+
+  const handleSignUpClick = () => {
+    setShowSignInButton(false);
+  };
+
   return (
     <nav className="bg-green-500 p-4 fixed w-full">
       <div className="container mx-auto flex justify-between items-center">
@@ -15,16 +20,24 @@ const Navbar = () => {
               Home
             </Link>
           </li>
+
           <li>
-            <Link to="/login" className="text-white hover:text-gray-300 transition-transform transform hover:scale-150">
-              Login
-            </Link>
+          <Link to="/login" className="text-white hover:text-gray-300 transition-transform transform hover:scale-150">
+                Login
+              </Link>
           </li>
-          <li>
-            <Link to="/signup" className="text-white hover:text-gray-300 transition-transform transform hover:scale-110">
+
+          {showSignInButton && (
+            <li>
+            <Link
+              to="/signup"
+              className="text-white hover:text-gray-300 transition-transform transform hover:scale-110"
+              onClick={handleSignUpClick}
+            >
               Sign Up
             </Link>
-          </li>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

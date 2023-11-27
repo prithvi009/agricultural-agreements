@@ -9,7 +9,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className=''>
+    <div className='flex flex-col'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
