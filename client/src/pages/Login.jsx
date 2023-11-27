@@ -30,11 +30,11 @@ const LoginPage = ({setUser}) => {
       });
 
       const data = await response.json();
-      setUser(data);
-      localStorage.setItem('user', JSON.stringify(data));
-
-      if (data !== null) {
+      
+      if (response.status === 200) {
         toast.success('Login successful');
+        setUser(data);
+        localStorage.setItem('user', JSON.stringify(data));
 
         if (data[3] === '1') {
           setTimeout(() => {

@@ -10,6 +10,7 @@ const Loader = () => {
         ariaLabel="bars-loading"
         wrapperStyle={{}}
         wrapperClass=""
+        className="w-full h-full flex justify-center items-center"
         visible={true}
     />
   )
