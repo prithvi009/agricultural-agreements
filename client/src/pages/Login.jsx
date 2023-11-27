@@ -98,7 +98,7 @@ const LoginPage = ({setUser}) => {
                     </button>
                   
                 </form>
-                <p className='mt-4'>Dont have an Account? <Link className="text-blue-500" to='/signup'>signup</Link></p>
+                <p className='mt-4 flex text-center items-center justify-center'>Don't have an Account ?  <Link className="text-blue-500" to='/signup'> Signup</Link></p>
         </>
         )}
         <ToastContainer />
