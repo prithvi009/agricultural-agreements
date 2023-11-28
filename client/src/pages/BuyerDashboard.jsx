@@ -37,11 +37,11 @@ const BuyerDashboard = () => {
 
   return (
     <div >
-      <h2>Buyer Dashboard</h2>
+      <h2 className='mt-10'>Buyer Dashboard</h2>
       <ContractList contracts={contracts}/>
       {
         isBuyer === '2' ? (
-          <Link to="/contract" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
+          <Link to="/dashboard/contract" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300">
             Create Contract
           </Link>
         ) : null

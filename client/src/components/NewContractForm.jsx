@@ -12,7 +12,6 @@ const NewContractForm = () => {
   
   const [formData, setFormData] = useState({
     farmer: '0x0448D11632853DE1F86AfB26160822E1Fc2EC924',
-    buyer: '',
     farmerName: '',
     buyerName: '',
     cropType: '',
@@ -25,20 +24,14 @@ const NewContractForm = () => {
   });
 
 
-  const handlePriceChange = (e) => {
-    const rawValue = e.target.value;
-    const numericValue = rawValue.replace(/[^0-9.]/g, '');
-    const formattedValue = `₹${numericValue}`;
-    setFormData({ ...formData, pricePerUnit: formattedValue });
-  };
 
   const handleChange = (e) => {
-    // Remove the placeholder when the user starts typing
     setFormData({ ...formData, deliveryDate: e.target.value });
+
   };
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+    console.log('Form data:', formData);
     try{
       const response = await fetch(`http://localhost:5001/agri/create/${buyer}`, {
         method: 'POST',
@@ -52,7 +45,7 @@ const NewContractForm = () => {
       if (response.ok) {
         toast.success('Contract created successfully');
         setTimeout(() => {
-          navigate('/buyer-dashboard');
+          navigate('/dashboard');
         }, 2000);
       }
     }
@@ -161,7 +154,7 @@ const NewContractForm = () => {
           placeholder=" "
           required=""
           value={formData.pricePerUnit}
-          onChange={handlePriceChange}
+          onChange={(e)=> setFormData({...formData, pricePerUnit: e.target.value})}
         />
         <label
           htmlFor="pricePerUnit"
