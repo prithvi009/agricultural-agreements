@@ -64,7 +64,9 @@ const LoginPage = ({setUser}) => {
       <div className="max-w-md w-full">
       {
             loading ? (
-              <Loader/>
+              <div className="w-full h-full flex justify-center items-center text-blue-500">
+                <Loader/>
+              </div>
             ) : (
               <>
                 <h2 className="text-2xl font-semibold mb-4 text-center">Login</h2>

@@ -35,7 +35,7 @@ const Signup = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          walletAddress: "0xd0d09Dd775241100173d934fa1D638e5b8a24dc8", 
+          walletAddress: "0x0448D11632853DE1F86AfB26160822E1Fc2EC924", 
           name: username,
           email,
           userType:userT,
