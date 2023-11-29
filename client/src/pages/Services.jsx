@@ -1,16 +1,81 @@
-import React from 'react'
+import React, { useState } from 'react';
 
-export default function Services() {
+const OurServicesPage = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
-    <div className='mt-[90px] h-[100vh] flex flex-col justify-center items-center text-center'>
-        <div className="max-w-2xl mx-auto pb-4 text-center flex justify-center items-center ">
-        <h1 className="text-[5rem] font-extrabold text-blue-600 mb-4">Our Services</h1>
-      </div>
+    <div className="container mx-auto mt-[7rem]">
+      <h2 className="text-[5rem] font-semibold mb-6 text-blue-600 text-center mt-[8rem]">Our Services</h2>
 
-      <div className='mx-auto w-[70rem] text-2xl text-center'>
-      Empower your farming journey with our specialized agricultural agreements. Bridging farmers and buyers seamlessly, we craft agreements that safeguard interests and promote fair practices. From crop specifics to delivery terms, our meticulous approach ensures a transparent and mutually beneficial partnership. Cultivate success with agreements designed to nurture growth and prosperity in every harvest.
+      {/* Hello world */}
+      <div className='flex flex-row gap-2 justify-center relative'>
+
+            {/* Service 1 */}
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Buyer Assurance
+                </h5>
+              </a>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                As a buyer, you get the assurance that your raw materials will be delivered on time. Our platform enables you to create contracts with farmers, ensuring a secure and timely supply chain for your business.
+              </p>
+              
+            </div>
+
+
+
+  
+
+
+          <div className="flex flex-row gap-2 justify-center">
+            {/* Service 1 */}
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                  Farmer Assurance
+                </h5>
+              </a>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Farmers receive the assurance that their crops will be purchased at an agreed-upon price. By creating contracts with buyers, farmers can protect their yields from market fluctuations and ensure a stable income.
+              </p>
+
+            </div>
+
+            {/* Add more services as needed */}
+          </div>
+
+
+
+          <div className="flex flex-row gap-2 justify-center">
+            {/* Service 1 */}
+            <div className="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <a href="#">
+                <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                Smart Contract Automation
+                </h5>
+              </a>
+              <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+              Our platform leverages smart contract technology to automate and secure agreements between farmers and buyers. Through self-executing contracts, both parties are ...
+              </p>
+
+            </div>
+
+            {/* Add more services as needed */}
+          </div>
+
       </div>
 
     </div>
-  )
-}
+  );
+};
+
+export default OurServicesPage;
