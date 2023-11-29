@@ -1,12 +1,26 @@
 import React from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 import navlogo from '../images/navlogo.png'
 import '../App.css'
 const Navbar = () => {
 
   const user = JSON.parse(localStorage.getItem('user'));
   const navigate = useNavigate();
+  const handelLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/home');
 
+    // Display toast notification
+    toast.success('You have been logged out!', {
+      position: 'top-right',
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+    })
+  }
   return(
     <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
       <div className=" flex flex-wrap w-5/6 items-center justify-between mx-auto p-3">
@@ -18,7 +32,7 @@ const Navbar = () => {
             
               <button 
                   type="button"
-                  onClick={()=> {localStorage.removeItem('user'); navigate('/home')}} 
+                  onClick={handelLogout} 
                   className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                   Logout
