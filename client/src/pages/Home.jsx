@@ -8,7 +8,7 @@ import Goal from './Goal';
 import Problem from './Problems';
 
 
-const images = [image3, image1, image4 /* Add more image URLs here... */];
+const images = [image3, image1, image4 ];
 
 const Home = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
