@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Problem() {
   return (
-    <div className='mt-[70px] mb-[4rem]'>
+    <div className='mt-[70px] mb-[4rem] '>
         <div className="max-w-2xl mx-auto pb-4 text-center flex justify-center items-center ">
         <h1 className="text-[5rem] font-bold text-blue-600 mb-4">Farmer's Problem</h1>
       </div>

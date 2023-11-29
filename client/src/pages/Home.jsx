@@ -6,8 +6,8 @@ import image3 from '../images/c.jpg';
 import image4 from '../images/d.jpg';
 import Goal from './Goal';
 import Problem from './Problems';
-
-
+import FrequentlyAsked from '../components/FrequentlyAsked'
+import { Link } from 'react-router-dom';
 const images = [image3, image1, image4 ];
 
 const Home = () => {
@@ -31,7 +31,7 @@ const Home = () => {
   };
 
   return (
-      <div>
+      <div className=''>
       <div className="flex flex-col justify-center items-center min-h-screen bg-gray-100 mt-[4.5rem] ">
         <ImageSlider
           images={images}
@@ -40,6 +40,8 @@ const Home = () => {
         />
         <Problem/>
         <Goal/>
+        <FrequentlyAsked/>
+        
       </div>
       <Footer />
       </div>
