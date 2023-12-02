@@ -9,7 +9,7 @@ const Navbar = () => {
   const navigate = useNavigate();
   const handelLogout = () => {
     localStorage.removeItem('user');
-    navigate('/home');
+    navigate('/');
 
     // Display toast notification
     toast.success('You have been logged out!', {
@@ -72,7 +72,7 @@ const Navbar = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/realtimedata" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
+                <NavLink to="/live-market" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">
                   Live Market
                 </NavLink>
               </li>

@@ -9,6 +9,7 @@ import AboutUs from './pages/About';
 import BuyerDashboard from './pages/BuyerDashboard';
 import NewContractForm from './components/NewContractForm';
 import Services from './pages/Services';
+import RealtimeData from './components/RealtimeData'
 import './index.css'
 
 function App() {
@@ -24,7 +25,7 @@ function App() {
         <Route path='/about' element={<AboutUs/>}/>
         <Route path="/dashboard" element={<BuyerDashboard/>} />
         <Route path="/dashboard/contract" element={<NewContractForm/>} />
-
+        <Route path="/live-market" element={<RealtimeData/>}/>
         <Route path='/services' element={<Services/>}/>
 
       </Routes>

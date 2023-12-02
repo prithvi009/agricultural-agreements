@@ -7,8 +7,8 @@ contract AgriculturalAgreement {
     enum AgreementStatus { Pending, Accepted, Rejected }
 
     struct Agreement {
-        string farmer; // Change type from address to string
-        string buyer; // Change type from address to string
+        string farmer; 
+        string buyer; 
         string farmerName;
         string buyerName;
         string cropType;

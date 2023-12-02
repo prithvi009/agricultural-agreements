@@ -6,8 +6,7 @@ import image3 from '../images/c.jpg';
 import image4 from '../images/d.jpg';
 import Goal from './Goal';
 import Problem from './Problems';
-import FrequentlyAsked from '../components/FrequentlyAsked'
-import { Link } from 'react-router-dom';
+import FrequentlyAsked from '../components/FrequentlyAsked';
 const images = [image3, image1, image4 ];
 
 const Home = () => {

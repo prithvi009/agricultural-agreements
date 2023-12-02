@@ -26,8 +26,9 @@ const Signup = () => {
         toast.error('Please fill in all required fields');
         return;
       }
-
-      const userT = userType === 'Farmer' ? 1 : 2;
+      console.log(userType)
+      const userT = userType === 'farmer' ? 1 : 2;
+      console.log(userT);
 
       const response = await fetch('http://localhost:5001/auth/create', {
         method: 'POST',
@@ -35,7 +36,7 @@ const Signup = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          walletAddress: "0x0448D11632853DE1F86AfB26160822E1Fc2EC924", 
+          walletAddress: "0xBc110427c3376e378d863D7d2F714331A213E7b2", 
           name: username,
           email,
           userType:userT,
